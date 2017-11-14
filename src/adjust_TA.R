@@ -164,16 +164,3 @@ lhsDesign <- function(n, dimension, randomized=TRUE, seed=NULL){
 
 
 
-
-
-crit_dice = "C2"
-dimension =15
-n = 30
-X = lhsDesign(n,dimension,randomized = FALSE)$design
-
-Xopt_ADTA <-  discrepADTA_LHS(X,T0=0.005*discrepancyCriteria(X,type='C2')[[1]],inner_it=100,J=50,it=15)
-
-plot(Xopt_ADTA$critValues,type = "l")
-
-
-
