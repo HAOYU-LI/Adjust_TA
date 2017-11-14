@@ -5,7 +5,7 @@ source("./lhsDesign.R")
 #####Function to extract elements from lists composed with lists#####
 extract_list<-function(l){return(l[[1]])}
 #####discrepADTA_LHS#####
-#####L2 DISCREPANCY LHS VIA ESE OPTIMIZATION#####
+#####CL2 DISCREPANCY LHS VIA adjusted TA OPTIMIZATION#####
 
 #---------------------------------------------------------------------------|
 #args :  design     : the design                                            |
@@ -13,7 +13,7 @@ extract_list<-function(l){return(l[[1]])}
 #        inner_it  : number of iterations for inner loop                    |
 #        J     : number of new proposed LHS in inner loop                   |
 #        it    : number of iterations for outer loop                        |
-#        criterion: "C2", "W2" or "L2star"                               |
+#        criterion: "C2"                              |
 #output        : a list containing all the input arguments plus:            |
 #       low L2_discrepancy design                                           |
 #       vector of criterion values along the iterations                     |
