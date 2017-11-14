@@ -13,7 +13,7 @@ extract_list<-function(l){return(l[[1]])}
 #        inner_it  : number of iterations for inner loop                    |
 #        J     : number of new proposed LHS in inner loop                   |
 #        it    : number of iterations for outer loop                        |
-#        criterion: "C2", "W2" or "L2star"                               |
+#        criterion: "C2", "W2" or "L2star"                                  |
 #output        : a list containing all the input arguments plus:            |
 #       low L2_discrepancy design                                           |
 #       vector of criterion values along the iterations                     |
@@ -161,6 +161,34 @@ lhsDesign <- function(n, dimension, randomized=TRUE, seed=NULL){
   # Outputs:
   return(list(n=n,dimension=dimension,design=x,randomized=randomized,seed=seed))
 }
+
+
+
+
+library(UniDOE)
+crit_dice = "C2"
+dimension =19
+n = 20
+para_c = 0.03
+X = lhsDesign(n,dimension,randomized = FALSE)$design
+
+Xopt_ADTA <-  discrepADTA_LHS(X,T0=0.005*discrepancyCriteria(X,type='C2')[[1]],inner_it=100,J=50,it=100)
+
+Xopt_unidoe = UDC(n=n,s=dimension,q=n,crit="CL2",maxiter =10100,vis=T)
+
+x = c(1:length(Xopt_unidoe$obj_list[-c(1:100)]))
+matplot(x,cbind(Xopt_ADTA$critValues[-c(1:100)]^2,Xopt_unidoe$obj_list[-c(1:100)]),
+        type="l",col=c("red","blue"),
+        main = "Comparison between Adjust TA & SOAT on CL2(20,20^19)",
+        xlab = "iterations",
+        ylab = "criterion",
+        lty=c(1,1),
+        lwd = c(2,2))
+
+legend("topright",
+       c("Adjust_TA","UniDOE_SOAT"),
+       lty=c(1,1), # gives the legend appropriate symbols (lines)
+       lwd=c(2.5,2.5),col=c("red","green"))
 
 
 
