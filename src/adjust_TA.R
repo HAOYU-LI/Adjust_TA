@@ -13,8 +13,9 @@ extract_list<-function(l){return(l[[1]])}
 #        inner_it  : number of iterations for inner loop                    |
 #        J     : number of new proposed LHS in inner loop                   |
 #        it    : number of iterations for outer loop                        |
-#        criterion: "C2", "W2" or "L2star"                                  |
 #output        : a list containing all the input arguments plus:            |
+#        criterion: "C2"                                                    |
+#        output: a list containing all the input arguments plus:            |
 #       low L2_discrepancy design                                           |
 #       vector of criterion values along the iterations                     |
 #       vector of temperature values along the iterations                   |
