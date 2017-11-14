@@ -5,7 +5,7 @@ source("./lhsDesign.R")
 #####Function to extract elements from lists composed with lists#####
 extract_list<-function(l){return(l[[1]])}
 #####discrepADTA_LHS#####
-#####CL2 DISCREPANCY LHS VIA adjusted TA OPTIMIZATION#####
+#####L2 DISCREPANCY LHS VIA ESE OPTIMIZATION#####
 
 #---------------------------------------------------------------------------|
 #args :  design     : the design                                            |
@@ -13,11 +13,7 @@ extract_list<-function(l){return(l[[1]])}
 #        inner_it  : number of iterations for inner loop                    |
 #        J     : number of new proposed LHS in inner loop                   |
 #        it    : number of iterations for outer loop                        |
-<<<<<<< HEAD
 #        criterion: "C2", "W2" or "L2star"                                  |
-=======
-#        criterion: "C2"                              |
->>>>>>> a587b3edd0e8779de6b5a44687a65dc236a6f35e
 #output        : a list containing all the input arguments plus:            |
 #       low L2_discrepancy design                                           |
 #       vector of criterion values along the iterations                     |
@@ -188,11 +184,11 @@ matplot(x,cbind(Xopt_ADTA$critValues[-c(1:100)]^2,Xopt_unidoe$obj_list[-c(1:100)
         ylab = "criterion",
         lty=c(1,1),
         lwd = c(2,2))
-
+abline(h=1.9967,col = "green")
 legend("topright",
-       c("Adjust_TA","UniDOE_SOAT"),
-       lty=c(1,1), # gives the legend appropriate symbols (lines)
-       lwd=c(2.5,2.5),col=c("red","green"))
+       c("Adjust_TA","UniDOE_SOAT","discrepancy_from_website"),
+       lty=c(1,1,1), # gives the legend appropriate symbols (lines)
+       lwd=c(2.5,2.5,2.5),col=c("red","blue","green"))
 
 
 
