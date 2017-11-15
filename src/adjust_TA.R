@@ -1,3 +1,8 @@
+#' Adjust threshold accepting algorithm implementation with minor difference.
+#' c=0.03, distinct pair comparison = 50
+#' Reference: Fang, K.T., Ke X. and Elsawah, A.M. (2017).Construction of uniform designs via an adjusted threshold accepting algorithm. Journal Of Complexity 
+
+
 source("./discrepancyCriteria.R")
 source("./fcts_optimalLHSDesigns.R")
 source("./lhsDesign.R")
@@ -5,7 +10,7 @@ source("./lhsDesign.R")
 #####Function to extract elements from lists composed with lists#####
 extract_list<-function(l){return(l[[1]])}
 #####discrepADTA_LHS#####
-#####L2 DISCREPANCY LHS VIA ESE OPTIMIZATION#####
+#####L2 DISCREPANCY LHS VIA adjust threshold acceptance OPTIMIZATION#####
 
 #---------------------------------------------------------------------------|
 #args :  design     : the design                                            |
@@ -173,9 +178,9 @@ n = 20
 para_c = 0.03
 X = lhsDesign(n,dimension,randomized = FALSE)$design
 
-Xopt_ADTA <-  discrepADTA_LHS(X,T0=0.005*discrepancyCriteria(X,type='C2')[[1]],inner_it=100,J=50,it=100)
+Xopt_ADTA <-  discrepADTA_LHS(X,T0=0.005*discrepancyCriteria(X,type='C2')[[1]],inner_it=100,J=50,it=80)
 
-Xopt_unidoe = UDC(n=n,s=dimension,q=n,crit="CL2",maxiter =10100,vis=T)
+Xopt_unidoe = UDC(n=n,s=dimension,q=n,crit="CL2",maxiter =8080,vis=T)
 
 x = c(1:length(Xopt_unidoe$obj_list[-c(1:100)]))
 matplot(x,cbind(Xopt_ADTA$critValues[-c(1:100)]^2,Xopt_unidoe$obj_list[-c(1:100)]),
@@ -185,7 +190,7 @@ matplot(x,cbind(Xopt_ADTA$critValues[-c(1:100)]^2,Xopt_unidoe$obj_list[-c(1:100)
         ylab = "criterion",
         lty=c(1,1),
         lwd = c(2,2))
-abline(h=1.9967,col = "green")
+abline(h=1.997,col = "green")
 legend("topright",
        c("Adjust_TA","UniDOE_SOAT","discrepancy_from_website"),
        lty=c(1,1,1), # gives the legend appropriate symbols (lines)
