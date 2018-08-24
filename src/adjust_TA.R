@@ -111,22 +111,6 @@ discrepADTA_LHS<-function(design,T0=0.005*discrepancyCriteria(design,type='C2')[
       
       temp <- c(temp,rep(threshold_seq[q],inner_it)) ; proba <- c(proba,rep(v1,inner_it))   
       
-      # if (best-bold<0){f<-1
-      # if(v1>=0.1 & v2<=v1)
-      # {Temperature<-0.8*Temperature}
-      # else {if (v1>=0.1 & v2==v1){}
-      #   else {Temperature<-Temperature/0.8}
-      # }
-      # }
-      # 
-      # # if the criteria is optimized after the inner loop, then f equals 1
-      # else {f<-0
-      # if (v1<=0.1){Temperature<-Temperature/0.7}
-      # else {Temperature<-Temperature*0.9}
-      # }
-      
-      # else, it is the exploratory step
-      
     }
     List.res <- list(design,T0,inner_it,J,it,criterion,Best,crit,temp,proba)
     names(List.res) <-c("InitialDesign","TO","inner_it","J","it","criterion","design","critValues","tempValues","probaValues") 
