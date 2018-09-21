@@ -1,5 +1,5 @@
 # Adjust_TA
-Adjust TA algorithm implementation for Latin hypercube design
+Adjust threshold accepting algorithm implementation for Latin hypercube design
 This is an R implementation of adjust thresholding accepting algorithm for Fang et al's paper
 
 ### Acknowledgement:
